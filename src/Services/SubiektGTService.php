@@ -26,13 +26,13 @@ class SubiektGTService
         try {
             $this->gt = new COM("InsERT.GT") or die("Cannot create Subiekt GT COM object");
             $this->gt->Produkt = 1;
-            $this->gt->Serwer = env('SUBIEKT_SERVER', '.\SQL2019');
-            $this->gt->Baza = env('SUBIEKT_DATABASE', 'FM_TEST');
+            $this->gt->Serwer = env('SFERA_SERVER');
+            $this->gt->Baza = env('SFERA_DATABASE');
             $this->gt->Autentykacja = 0;
-            $this->gt->Uzytkownik = env('SUBIEKT_USER', 'sa');
-            $this->gt->UzytkownikHaslo = env('SUBIEKT_PASSWORD', 'SQl24!#');
-            $this->gt->Operator = env('SUBIEKT_OPERATOR', 'IT');
-            $this->gt->OperatorHaslo = env('SUBIEKT_OPERATOR_PASSWORD', '');
+            $this->gt->Uzytkownik = env('SFERA_USER');
+            $this->gt->UzytkownikHaslo = env('SFERA_PASSWORD');
+            $this->gt->Operator = env('SFERA_OPERATOR');
+            $this->gt->OperatorHaslo = env('SFERA_OPERATOR_PASSWORD');
         } catch (\Throwable $e) {
             Log::error('Failed to initialize Subiekt GT COM object: ' . $e->getMessage());
             throw new \Exception('Subiekt GT initialization failed');
