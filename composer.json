@@ -1,0 +1,25 @@
+{
+    "name": "aliaswpeu/sfera-api",
+    "description": "Api to SubiektGT Sfera",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "aliaswpeu",
+            "email": "alias@wp.eu"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Aliaswpeu\\SferaApi\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Aliaswpeu\\SferaApi\\SferaApiServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
