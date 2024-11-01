@@ -113,8 +113,8 @@ class SubiektGTService
      */
     private function setTowarProperties($Otw, array $request): void
     {
-        $Otw->Symbol = $request['Symbol'] ?? 'towar';
-        $Otw->Nazwa = $request['Nazwa'] ?? 'towartest';
-        $Otw->Opis = $request['Opis'] ?? 'towartest';
+        $Otw->Symbol = $request['Symbol'];
+        $Otw->Nazwa = $request['Nazwa'];
+        $Otw->Opis = $request['Opis'];
     }
 }
