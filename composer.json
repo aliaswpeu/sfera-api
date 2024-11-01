@@ -2,12 +2,7 @@
     "name": "aliaswpeu/sfera-api",
     "description": "Api to SubiektGT Sfera",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "aliaswpeu",
-            "email": "stopspam@wp.eu"
-        }
-    ],
+    "authors": [],
     "autoload": {
         "psr-4": {
             "Aliaswpeu\\SferaApi\\": "src"
