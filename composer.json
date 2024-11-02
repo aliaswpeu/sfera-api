@@ -1,0 +1,23 @@
+{
+    "name": "aliaswpeu/sfera-api",
+    "description": "Api to SubiektGT Sfera",
+    "license": "MIT",
+    "authors": [],
+    "autoload": {
+        "psr-4": {
+            "Aliaswpeu\\SferaApi\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Aliaswpeu\\SferaApi\\SferaApiServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "ext-com_dotnet": "8.3.13"
+    },
+    "version": "0.0.1"
+}
