@@ -37,7 +37,7 @@ class SubiektGTController extends Controller
 // $request['AdrDostKodPocztowy'];
 // $request['AdrDostMiejscowosc'];
 // $request['AdrDostPanstwo'];
-        $data = $this->subiektGTService->createKontrahent($request->all());
+        $data = $this->subiektGTService->createKontrahent($request);
         return response()->json($data);
     }
 
