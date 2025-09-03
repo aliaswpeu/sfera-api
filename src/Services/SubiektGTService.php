@@ -27,7 +27,7 @@ class SubiektGTService
     private function initializeGT(): void
     {
         try {
-            $this->gt = new COM("InsERT.GT") or die("Cannot create Subiekt GT COM object");
+            $this->gt = new COM("InsERT.GT", null, CP_UTF8) or die("Cannot create Subiekt GT COM object");
             $this->gt->Produkt            = 1;
             $this->gt->Serwer             = config('sfera-api.sfera_server');
             $this->gt->Baza               = config('sfera-api.sfera_database');
@@ -55,6 +55,7 @@ class SubiektGTService
             'KodPocztowy', 'Miejscowosc', 'Panstwo', 'NIP', 
             'Pole1', 'Pole2', 'Pole3', 'Pole4', 'Pole5', 'Pole6', 'Pole7', 'Pole8',
             'Email',
+            'OpiekunId',
             'AdrDostNazwa', 'AdrDostUlica', 'AdrDostNrDomu', 'AdrDostKodPocztowy', 'AdrDostMiejscowosc', 'AdrDostPanstwo',
         ];
         $data = $request->only($fields);
@@ -92,6 +93,7 @@ class SubiektGTService
             'Panstwo'     => 'Panstwo',
             'NIP'         => 'NIP',
             'NazwaPelna'  => 'NazwaPelna',
+            'OpiekunId'   => 'OpiekunId',
             'Pole1'       => 'Pole1',
             'Pole2'       => 'Pole2',
             'Pole3'       => 'Pole3',
