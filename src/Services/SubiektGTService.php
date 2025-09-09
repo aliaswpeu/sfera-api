@@ -28,14 +28,14 @@ class SubiektGTService
     {
         try {
             $this->gt = new COM("InsERT.GT", null, CP_UTF8) or die("Cannot create Subiekt GT COM object");
-            $this->gt->Produkt            = 1;
-            $this->gt->Serwer             = config('sfera-api.sfera_server');
-            $this->gt->Baza               = config('sfera-api.sfera_database');
-            $this->gt->Autentykacja       = 0;
-            $this->gt->Uzytkownik         = config('sfera-api.sfera_user');
-            $this->gt->UzytkownikHaslo    = config('sfera-api.sfera_password');
-            $this->gt->Operator           = config('sfera-api.sfera_operator');
-            $this->gt->OperatorHaslo      = config('sfera-api.sfera_operator_password');
+            $this->gt->Produkt = 1;
+            $this->gt->Serwer = config('sfera-api.sfera_server');
+            $this->gt->Baza = config('sfera-api.sfera_database');
+            $this->gt->Autentykacja = 0;
+            $this->gt->Uzytkownik = config('sfera-api.sfera_user');
+            $this->gt->UzytkownikHaslo = config('sfera-api.sfera_password');
+            $this->gt->Operator = config('sfera-api.sfera_operator');
+            $this->gt->OperatorHaslo = config('sfera-api.sfera_operator_password');
         } catch (\Throwable $e) {
             Log::error('Failed to initialize Subiekt GT COM object: ' . $e->getMessage());
             throw new \Exception('Subiekt GT initialization failed');
@@ -51,12 +51,34 @@ class SubiektGTService
     public function createKontrahent(Request $request): array
     {
         $fields = [
-            'Symbol', 'Nazwa', 'NazwaPelna', 'Wojewodztwo', 'Ulica', 'NrDomu', 'NrLokalu',
-            'KodPocztowy', 'Miejscowosc', 'Panstwo', 'NIP', 
-            'Pole1', 'Pole2', 'Pole3', 'Pole4', 'Pole5', 'Pole6', 'Pole7', 'Pole8',
+            'Symbol',
+            'Nazwa',
+            'NazwaPelna',
+            'Wojewodztwo',
+            'Ulica',
+            'NrDomu',
+            'NrLokalu',
+            'KodPocztowy',
+            'Miejscowosc',
+            'Panstwo',
+            'NIP',
+            'Pole1',
+            'Pole2',
+            'Pole3',
+            'Pole4',
+            'Pole5',
+            'Pole6',
+            'Pole7',
+            'Pole8',
+            'KhSklepuInternetowego',
             'Email',
             'OpiekunId',
-            'AdrDostNazwa', 'AdrDostUlica', 'AdrDostNrDomu', 'AdrDostKodPocztowy', 'AdrDostMiejscowosc', 'AdrDostPanstwo',
+            'AdrDostNazwa',
+            'AdrDostUlica',
+            'AdrDostNrDomu',
+            'AdrDostKodPocztowy',
+            'AdrDostMiejscowosc',
+            'AdrDostPanstwo',
         ];
         $data = $request->only($fields);
 
@@ -82,26 +104,27 @@ class SubiektGTService
     private function setKontrahentProperties($Okh, array $data): void
     {
         $map = [
-            'Symbol'      => 'Symbol',
-            'Nazwa'       => 'Nazwa',
+            'Symbol' => 'Symbol',
+            'Nazwa' => 'Nazwa',
             'Wojewodztwo' => 'Wojewodztwo',
-            'Ulica'       => 'Ulica',
-            'NrDomu'      => 'NrDomu',
-            'NrLokalu'    => 'NrLokalu',
+            'Ulica' => 'Ulica',
+            'NrDomu' => 'NrDomu',
+            'NrLokalu' => 'NrLokalu',
             'KodPocztowy' => 'KodPocztowy',
             'Miejscowosc' => 'Miejscowosc',
-            'Panstwo'     => 'Panstwo',
-            'NIP'         => 'NIP',
-            'NazwaPelna'  => 'NazwaPelna',
-            'OpiekunId'   => 'OpiekunId',
-            'Pole1'       => 'Pole1',
-            'Pole2'       => 'Pole2',
-            'Pole3'       => 'Pole3',
-            'Pole4'       => 'Pole4',
-            'Pole5'       => 'Pole5',
-            'Pole6'       => 'Pole6',
-            'Pole7'       => 'Pole7',
-            'Pole8'       => 'Pole8',
+            'Panstwo' => 'Panstwo',
+            'NIP' => 'NIP',
+            'NazwaPelna' => 'NazwaPelna',
+            'OpiekunId' => 'OpiekunId',
+            'Pole1' => 'Pole1',
+            'Pole2' => 'Pole2',
+            'Pole3' => 'Pole3',
+            'Pole4' => 'Pole4',
+            'Pole5' => 'Pole5',
+            'Pole6' => 'Pole6',
+            'Pole7' => 'Pole7',
+            'Pole8' => 'Pole8',
+            'KhSklepuInternetowego' => 'KhSklepuInternetowego',
         ];
 
         foreach ($map as $key => $prop) {
@@ -110,13 +133,17 @@ class SubiektGTService
             }
         }
 
-        if (! empty($data['Email'])) {
+        if (!empty($data['Email'])) {
             $Okh->Emaile()->Dodaj($data['Email']);
         }
 
         $deliveryFields = [
-            'AdrDostNazwa', 'AdrDostUlica', 'AdrDostNrDomu',
-            'AdrDostKodPocztowy', 'AdrDostMiejscowosc', 'AdrDostPanstwo',
+            'AdrDostNazwa',
+            'AdrDostUlica',
+            'AdrDostNrDomu',
+            'AdrDostKodPocztowy',
+            'AdrDostMiejscowosc',
+            'AdrDostPanstwo',
         ];
 
         if (collect($deliveryFields)->some(fn($field) => Arr::has($data, $field))) {
@@ -138,7 +165,7 @@ class SubiektGTService
     public function createTowar(Request $request): array
     {
         $fields = ['Symbol', 'Nazwa', 'Opis'];
-        $data   = $request->only($fields);
+        $data = $request->only($fields);
 
         try {
             $Sgt = $this->gt->Uruchom(0, 4);
