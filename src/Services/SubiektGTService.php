@@ -125,6 +125,7 @@ class SubiektGTService
             'Pole7' => 'Pole7',
             'Pole8' => 'Pole8',
             'KhSklepuInternetowego' => 'KhSklepuInternetowego',
+            'Email' => 'Email',
         ];
 
         foreach ($map as $key => $prop) {
@@ -133,9 +134,9 @@ class SubiektGTService
             }
         }
 
-        if (!empty($data['Email'])) {
+        /* if (!empty($data['Email'])) {
             $Okh->Emaile()->Dodaj($data['Email']);
-        }
+        } */
 
         $deliveryFields = [
             'AdrDostNazwa',
