@@ -72,6 +72,7 @@ class SubiektGTService
             'Pole8',
             'KhSklepuInternetowego',
             'Email',
+            'PoziomCenPrzySprzedazyId',
             'OpiekunId',
             'AdrDostNazwa',
             'AdrDostUlica',
@@ -126,6 +127,7 @@ class SubiektGTService
             'Pole8' => 'Pole8',
             'KhSklepuInternetowego' => 'KhSklepuInternetowego',
             'Email' => 'Email',
+            'PoziomCenPrzySprzedazyId' => 'PoziomCenPrzySprzedazyId',
         ];
 
         foreach ($map as $key => $prop) {

@@ -19,5 +19,5 @@
     "require": {
         "ext-com_dotnet": "^8"
     },
-    "version": "0.0.6"
+    "version": "0.0.7"
 }
